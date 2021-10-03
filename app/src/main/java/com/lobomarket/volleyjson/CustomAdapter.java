@@ -19,14 +19,17 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     List<Users> users;
     LayoutInflater inflater;
+    Context context;
 
-    public CustomAdapter(Context context, List<Users> users, LayoutInflater inflater) {
+    public CustomAdapter(Context context, List<Users> users) {
         this.users = users;
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.custom_users_layout, parent, false);
         ViewHolder vh = new ViewHolder(itemView);
         return vh;
@@ -36,6 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public int getItemCount() {
         return users.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView fullname;
