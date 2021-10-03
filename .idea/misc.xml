@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/asus/AndroidStudioProjects/VolleyJson/app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/VolleyJson/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/VolleyJson/app/src/main/res/layout/activity_multiple_viewer.xml" value="0.20102564102564102" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/VolleyJson/app/src/main/res/layout/custom_users_layout.xml" value="0.5" />
       </map>
     </option>
   </component>
