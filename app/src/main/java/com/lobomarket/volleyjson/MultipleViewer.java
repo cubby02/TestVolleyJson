@@ -49,8 +49,13 @@ public class MultipleViewer extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                clearData();
-                refreshList();
+                if (recyclerView.getItemDecorationCount() <= 0){
+                    clearData();
+                    refreshList();
+                } else {
+                    clearData();
+                }
+
             }
         });
 
@@ -74,12 +79,13 @@ public class MultipleViewer extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //no internet
                         textView.setVisibility(View.VISIBLE);
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 }
         );
 
         Volley.newRequestQueue(MultipleViewer.this).add(stringRequest);
-        swipeRefreshLayout.setRefreshing(false);
+
     }
 
 
@@ -103,6 +109,7 @@ public class MultipleViewer extends AppCompatActivity {
                                 u.setUserImg(userObject.getString("id_photo"));
 
                                 user.add(u);
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -110,6 +117,7 @@ public class MultipleViewer extends AppCompatActivity {
 
                         layoutManager = new LinearLayoutManager(getApplicationContext());
                         cAdapter = new CustomAdapter(getApplicationContext(), user);
+                        swipeRefreshLayout.setRefreshing(false);
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(cAdapter);
 
